@@ -13,10 +13,25 @@
         <div class="form-group">
             <label>Class</label>
             <select name="class">
-                <option value="" selected disabled>Select Class</option>
-                <option value="1">BCA</option>
-                <option value="2">BSC</option>
-                <option value="3">B.TECH</option>
+            <option value="" selected disabled>Select Class</option>
+                <?php 
+                
+                $conn = mysqli_connect('localhost', 'root', 'root', 'crud') or die('connection failed');
+
+                // $sql = "SELECT * FROM students JOIN student_class WHERE students.class = student_class.class_id";
+                $sql = "SELECT * FROM student_class";
+                $result = mysqli_query($conn, $sql) or die('query unsuccessfull');    
+                
+                while($row = mysqli_fetch_assoc($result)){
+                ?>
+                
+                <option value="<?php echo $row['class_id']; ?>"><?php echo $row['class_name']; ?></option>
+                <?php 
+                }
+                
+                ?>
+                
+           
             </select>
         </div>
         <div class="form-group">

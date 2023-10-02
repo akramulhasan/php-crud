@@ -34,7 +34,12 @@ $result = mysqli_query($conn, $sql) or die('query unsuccessfull');
                     <a href='delete-inline.php'>Delete</a>
                 </td>
             </tr>
-<?php } ?>
+<?php } else{
+    echo '<h2> No Records Found!</h2>';
+} 
+mysqli_close($conn);
+
+?>
         </tbody>
     </table>
  <?php }
